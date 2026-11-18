@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 Jeremy Gao <wensimehrp@gmail.com>
+// SPDX-License-Identifier: CC-BY-4.0
+
 #let required-params = (
   station-name: (
     type: "string",
@@ -42,7 +45,9 @@
   dx: -5pt,
   dy: -5pt,
   {
-    let img = image(bytes(read("./translink.svg").replace(regex("fill=\"#[0-9A-F]{6}\""), "fill=\"#FFFFFF\"")))
+    let img = image(bytes(
+      read("./translink.svg").replace(regex("fill=\"#[0-9A-F]{6}\""), "fill=\"#FFFFFF\""),
+    ))
     box(width: .5in, img)
   },
 )

@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 Jeremy Gao <wensimehrp@gmail.com>
+// SPDX-License-Identifier: CC-BY-4.0
+
 // This is the minimal template.
 #let required-params = (
   station-name: (

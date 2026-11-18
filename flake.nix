@@ -2,31 +2,16 @@
   description = "Web development environment with Bun";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    utils.url = "github:numtide/flake-utils";
+    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      utils,
-    }:
-    utils.lib.eachDefaultSystem (
-      system:
-      let
-        pkgs = import nixpkgs { inherit system; };
-      in
-      {
-        devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            bun
-            gnumake
-            p7zip
-          ];
-        };
-
-        packages.default = pkgs.bun;
-      }
-    );
+  outputs = inputs: {
+    devShells = builtins.mapAttrs (system: pkgs: {
+      default = pkgs.mkShell {
+        buildInputs = with pkgs; [
+          typst
+        ];
+      };
+    }) inputs.nixpkgs.legacyPackages;
+  };
 }

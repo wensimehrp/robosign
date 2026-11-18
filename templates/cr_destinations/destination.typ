@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2026 Jeremy Gao <wensimehrp@gmail.com>
+// SPDX-License-Identifier: CC-BY-4.0
+
 #let required-params = (
   field-1: (
     type: "enum",
@@ -160,7 +163,9 @@
       (:)
     }
     if type(sub-dict) != dictionary {
-      panic("Key collision: '" + key + "' is a value (" + str(sub-dict) + "), cannot become a branch.")
+      panic(
+        "Key collision: '" + key + "' is a value (" + str(sub-dict) + "), cannot become a branch.",
+      )
     }
     dict.insert(key, insert-path(sub-dict, rest, value))
   }
@@ -231,7 +236,9 @@
         grid(
           rows: 1fr,
           columns: (1fr, auto, 1fr),
-          place(center + bottom, dy: -.4cm, box(height: 3cm, format-text(s.complex.station-name-1))),
+          place(center + bottom, dy: -.4cm, box(height: 3cm, format-text(
+            s.complex.station-name-1,
+          ))),
           grid.cell(inset: .7cm)[
             #align(
               center + horizon,
@@ -249,10 +256,14 @@
               s.complex.class,
             ))))
           ],
-          place(center + bottom, dy: -.4cm, box(height: 3cm, format-text(s.complex.station-name-2))),
+          place(center + bottom, dy: -.4cm, box(height: 3cm, format-text(
+            s.complex.station-name-2,
+          ))),
         )
       } else {
-        place(center + bottom, dy: -.4cm, box(height: 3cm, width: 9cm, format-text(s.simple.station-names)))
+        place(center + bottom, dy: -.4cm, box(height: 3cm, width: 9cm, format-text(
+          s.simple.station-names,
+        )))
       }
     },
     grid.cell(align: center + horizon, fill: eval(params.color), inset: .1cm, {
@@ -282,7 +293,10 @@
   )
 }
 
-#let has-complex = (params.field-1.at("simple", default: none), params.field-2.at("simple", default: none)).any(it => (
+#let has-complex = (
+  params.field-1.at("simple", default: none),
+  params.field-2.at("simple", default: none),
+).any(it => (
   it == none
 ))
 #let grid-width = if has-complex { 13cm } else { 11.5cm }

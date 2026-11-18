@@ -1,8 +1,7 @@
-name: Build
+name: Build and deploy site
 
 on:
   workflow_dispatch:
-  pull_request:
   push:
     branches: [main]
 
@@ -17,35 +16,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6.0.2
-      - uses: actions/setup-node@v4
+
+      - uses: actions/upload-pages-artifact@v3
         with:
-          node-version: 'latest'
-          check-latest: true
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
+          path: "./dist"
 
-      - name: Install p7zip and download fonts
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y p7zip-full
-          ./download_fonts.mjs
-
-      - name: Build site
-        run: |
-          bun install --frozen-lockfile
-          bun run build
-
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './dist'
-
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v4
+      - uses: peaceiris/actions-gh-pages@v4
         with:
           personal_token: ${{ secrets.PERSONAL_TOKEN }}
-          external_repository: WenSimEHRP/Paiagram-Archive
+          external_repository: wensimehrp/Paiagram-Archive
           user_name: github-actions[bot]
           user_email: 41898282+github-actions[bot]@users.noreply.github.com
           publish_branch: main
