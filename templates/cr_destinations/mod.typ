@@ -10,7 +10,7 @@
         station-pinyin: "ALUKEERQINQI;QIQIHAER",
       ),
     ),
-    variations: (
+    variants: (
       simple: (
         station-names: (
           type: "string",
@@ -66,7 +66,7 @@
         trips-bottom: "G1235",
       ),
     ),
-    variations: (
+    variants: (
       simple: (
         station-names: (
           type: "string",
@@ -123,9 +123,8 @@
   ),
   logo-colors: (
     type: "enum",
-    // default: (default: none),
     default: (default: none),
-    variations: (
+    variants: (
       default: none,
       simple: (
         background: (
@@ -148,6 +147,7 @@
   ),
   params: required-params,
   published: "2026-05-03",
+  name: "China Railway Destinations",
 )) <template_data>
 
 

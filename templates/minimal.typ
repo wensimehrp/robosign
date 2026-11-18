@@ -17,6 +17,7 @@
   ),
   params: required-params,
   published: "2026-04-25",
+  name: "Minimal Template",
 )) <template_data>]
 
 #let params = {

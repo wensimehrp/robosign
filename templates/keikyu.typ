@@ -57,6 +57,7 @@
   ),
   params: required-params,
   published: "2026-04-25",
+  name: "Keikyu",
 )) <template_data>]
 
 #let params = {

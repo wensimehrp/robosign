@@ -14,6 +14,7 @@
   ),
   params: required-params,
   published: "2026-04-25",
+  name: "Vancouver SkyTrain",
 )) <template_data>
 
 #let params = {
