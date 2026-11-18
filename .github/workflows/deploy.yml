@@ -16,6 +16,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6.0.2
+      - uses: typst-community/setup-typst@v5
+        with:
+          typst-version: ^0.15.1
+
+      - name: Build site
+        run: time ./dist.typ compile
 
       - uses: actions/upload-pages-artifact@v3
         with:
